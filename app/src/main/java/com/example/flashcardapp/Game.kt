@@ -1,14 +1,23 @@
 package com.example.flashcardapp
-
 class Game {
-    val practiceNum = 0
-    val type : MathType
-        get() {
-            TODO()
-        }
-    val generatedNum = 0
-    val answer = 0
 
+    // Initialize Member Variables
+    private var practiceNum = 0
+    private val operand = arrayOf<String>("+","-","*","/")
+    private var generatedNum = 0
+    private var answer = 0
+    private var numsAlreadyUsed : Set<Int> = (0..0).toSet()
+    private var currentProblem = arrayOf<String>("")
+
+    // Initialize Methods
+    fun setOperand() {}
+    fun setPractice() {}
+    fun generateProblem() {}
+    fun getCurrentProblem() {}
+    fun getNewProblem() {}
+    fun isCorrect() {}
+    fun getAnswer() {}
 
 
 }
+

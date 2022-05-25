@@ -5,6 +5,8 @@ package com.example.flashcardapp
  *********************************************************/
 class Game {
 
+    // Initialize Constructor
+
     // Initialize Member Variables
     private var practiceNum = 0
     private var operand = ""
@@ -72,7 +74,7 @@ class Game {
      * A function to get the current problem.
      *********************************************************/
     fun getCurrentProblem() : String {
-        return "${practiceNum} ${operand} ${generatedNum} = "
+        return "${practiceNum} ${operand} ${generatedNum}"
     }
 
     /**********************************************************

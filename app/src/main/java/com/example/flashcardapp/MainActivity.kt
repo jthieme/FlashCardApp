@@ -2,7 +2,6 @@ package com.example.flashcardapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.SystemClock
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -12,6 +11,7 @@ import java.lang.Exception
 class MainActivity : AppCompatActivity() {
 
     private var g = Game()
+    private var sPN = SelectPracticeNumber()
     private lateinit var enterAnswer : EditText
     private lateinit var result : TextView
     /*private lateinit var leftHand : TextView
@@ -58,11 +58,11 @@ class MainActivity : AppCompatActivity() {
 
         } catch (e : Exception) {
             Toast.makeText(this, "Invalid input", Toast.LENGTH_LONG).show()
-            result.text = g.getPracticeNum().toString()
+            //result.text = g.getPracticeNum().toString()
         }
     }
 
-    private fun setProblem() {
+    fun setProblem() {
         g.setPracticeNum(1).toString()
         g.setOperand("x").toString()
         problem.text = "${g.getNewProblem()}"

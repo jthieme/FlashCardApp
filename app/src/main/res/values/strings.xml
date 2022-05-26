@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FlashCardApp</string>
+    <string name="title">Multiplication Flash Cards</string>
+    <string name="welcome">Welcome back!</string>
+    <string name="play_button">Play</string>
+    <string name="settings_button">Settings</string>
+    <string name="icon_description">app icon</string>
 </resources>

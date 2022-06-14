@@ -32,6 +32,7 @@
         android:textAlignment="center"
         android:textColor="#2196F3"
         android:textSize="130dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/bottomNum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -44,8 +45,10 @@
         android:layout_marginTop="252dp"
         android:text="X"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="#FF9800"
         android:textSize="125dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/bottomNum"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,13 +64,14 @@
         android:textAlignment="center"
         android:textColor="#4CAF50"
         android:textSize="130dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
 
     <View
         android:layout_width="340dp"
-        android:layout_height="4dp"
+        android:layout_height="6dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="12dp"
         android:background="@color/design_default_color_primary"
@@ -85,6 +89,7 @@
         android:inputType="number"
         android:textAlignment="center"
         android:textSize="60sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="TouchTargetSizeCheck" />

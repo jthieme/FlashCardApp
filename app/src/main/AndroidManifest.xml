@@ -8,6 +8,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FlashCardApp">
+        <!--<activity
+            android:name=".SelectPracticeNumber"
+            android:exported="true" />-->
         <activity
             android:name=".MainActivity"
             android:exported="true">

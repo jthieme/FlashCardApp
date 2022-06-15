@@ -1,9 +1,14 @@
 package com.example.flashcardapp
+
+import android.text.Editable
+
 /**********************************************************
  * GAME
  * A class to practice flash cards
  *********************************************************/
 class Game {
+
+    // Initialize Constructor
 
     // Initialize Member Variables
     private var practiceNum = 0
@@ -37,7 +42,7 @@ class Game {
      * A function to set the practice number. Number must be
      * greater than 0 and less than 12
      *********************************************************/
-    fun setPracticeNum(num : Int) {
+    fun setPracticeNum(num: Int) {
         if (num in 1..12)
             practiceNum = num
     }
@@ -72,7 +77,7 @@ class Game {
      * A function to get the current problem.
      *********************************************************/
     fun getCurrentProblem() : String {
-        return "${practiceNum} ${operand} ${generatedNum} = "
+        return "${practiceNum} ${operand} ${generatedNum}"
     }
 
     /**********************************************************
@@ -96,7 +101,6 @@ class Game {
     fun getAnswer() : String {
         return answer.toString()
     }
-
 
 }
 

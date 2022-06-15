@@ -3,10 +3,12 @@ package com.example.flashcardapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import java.lang.Exception
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         val calculate = findViewById<Button>(R.id.calculate)
 
@@ -66,6 +69,12 @@ class MainActivity : AppCompatActivity() {
         g.setPracticeNum(1).toString()
         g.setOperand("x").toString()
         problem.text = "${g.getNewProblem()}"
+
+      /*
+        //This is for testing purposes to make sure the activity view looks good. Delete for optimized view changing.
+        val playButton = findViewById<Button>(R.id.play_button)
+        playButton.setOnClickListener { setContentView(R.layout.activity_number) }
+      */
     }
 
 }

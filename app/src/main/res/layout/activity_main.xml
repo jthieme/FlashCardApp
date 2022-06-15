@@ -54,105 +54,14 @@
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/border"
-        android:layout_width="370dp"
-        android:layout_height="575dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/textview_border"
-        android:text=" "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/topNum"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginEnd="64dp"
-        android:text="11"
-        android:textAlignment="center"
-        android:textColor="#2196F3"
-        android:textSize="130dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNum"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/operator"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="252dp"
-        android:text="X"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#FF9800"
-        android:textSize="125dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/bottomNum"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-
-        android:id="@+id/bottomNum"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="312dp"
-        android:text="22"
-        android:textAlignment="center"
-        android:textColor="#4CAF50"
-        android:textSize="130dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" /><![CDATA[
 
 
-    <View
-        android:layout_width="340dp"
-        android:layout_height="6dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/design_default_color_primary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottomNum" />
 
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="210dp"
-        android:layout_height="148dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="64dp"
-        android:ems="10"
-        android:hint="answer"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="36dp"
-        android:text="submit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
 
 
         android:id="@+id/textView2"
@@ -171,52 +80,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.062" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/welcome"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <Button
-        android:id="@+id/settings_button"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/settings_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/play_button" />
-
-    <Button
-        android:id="@+id/play_button"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="272dp"
-        android:text="@string/play_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="226dp"
-        android:layout_height="256dp"
-        android:contentDescription="@string/icon_description"
-        app:layout_constraintBottom_toTopOf="@+id/play_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/icon" />
 
 
 
+
+]]>
 </androidx.constraintlayout.widget.ConstraintLayout>

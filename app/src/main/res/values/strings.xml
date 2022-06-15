@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">FlashCardApp</string>
+    <string name="title">Multiplication Flash Cards</string>
+    <string name="welcome">Welcome back!</string>
+    <string name="play_button">Play</string>
+    <string name="settings_button">Settings</string>
+    <string name="icon_description">app icon</string>
+    <string name="choose_number_text">Which number would you like to practice with?</string>
+    <string name="ones_button">Ones (1)</string>
+    <string name="twos_button">Twos (2)</string>
+    <string name="threes_button">Threes (3)</string>
+    <string name="fours_button">Fours (4)</string>
+    <string name="fives_button">Fives (5)</string>
+    <string name="sixes_button">Sixes (6)</string>
+    <string name="sevens_button">Sevens (7)</string>
+    <string name="eights_button">Eights (8)</string>
+    <string name="nines_button">Nines (9)</string>
+    <string name="tens_button">Tens (10)</string>
+    <string name="elevens_button">Elevens (11)</string>
+    <string name="twelves_button">Twelves (12)</string>
 </resources>

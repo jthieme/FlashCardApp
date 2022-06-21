@@ -1,5 +1,4 @@
 package com.example.flashcardapp
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -25,4 +24,5 @@ class SelectPracticeNumber : AppCompatActivity() {
         return 1
 
     }
+
 }

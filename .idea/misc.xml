@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Cayleigh/Documents/BYU-I/Applying_Programming/Update_Team/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
-        <entry key="..\:/Users/jomth/AndroidStudioProjects/FlashCardApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2265" />
-        <entry key="..\:/Users/jomth/AndroidStudioProjects/FlashCardApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/jomth/AndroidStudioProjects/FlashCardApp/app/src/main/res/layout/activity_open_page.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/jomth/AndroidStudioProjects/FlashCardApp/app/src/main/res/layout/activity_select_practice_number.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Sabrina/StudioProjects/FlashCardApp/app/src/main/res/layout/activity_best_ui.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Sabrina/StudioProjects/FlashCardApp/app/src/main/res/layout/activity_logo.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Sabrina/StudioProjects/FlashCardApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Sabrina/StudioProjects/FlashCardApp/app/src/main/res/layout/activity_number.xml" value="0.33" />
+        <entry key="..\:/Users/Sabrina/StudioProjects/FlashCardApp/app/src/main/res/layout/activity_open_page.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Sabrina/StudioProjects/FlashCardApp/app/src/main/res/layout/activity_play.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Sabrina/StudioProjects/FlashCardApp/app/src/main/res/layout/activity_select_practice_number.xml" value="0.38697916666666665" />
       </map>
     </option>
   </component>

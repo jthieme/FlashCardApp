@@ -76,13 +76,6 @@ class MainActivity : AppCompatActivity() {
 
         db.add(users)
 
-
-
-      /*
-        //This is for testing purposes to make sure the activity view looks good. Delete for optimized view changing.
-        val playButton = findViewById<Button>(R.id.play_button)
-        playButton.setOnClickListener { setContentView(R.layout.activity_number) }
-      */
     }
 
 }

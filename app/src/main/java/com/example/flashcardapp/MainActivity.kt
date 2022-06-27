@@ -13,12 +13,12 @@ import java.lang.Exception
 class MainActivity : AppCompatActivity() {
 
     private var g = Game()
-    private var sPN = SelectPracticeNumber()
+//    private var sPN = SelectPracticeNumber()
     private lateinit var enterAnswer : EditText
     private lateinit var result : TextView
-    /*private lateinit var leftHand : TextView
+    private lateinit var topNum : TextView
     private lateinit var operand : TextView
-    private lateinit var rightHand : TextView*/
+    private lateinit var bottomNum : TextView
     private lateinit var problem : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,9 +32,9 @@ class MainActivity : AppCompatActivity() {
 
         enterAnswer = findViewById(R.id.enterAnswer)
         problem = findViewById(R.id.problem)
-        /*leftHand = findViewById(R.id.leftHand)
+        topNum = findViewById(R.id.topNum)
         operand = findViewById(R.id.operand)
-        rightHand = findViewById(R.id.rightHand)*/
+        bottomNum = findViewById(R.id.bottomNum)
         result = findViewById(R.id.result)
 
         setProblem()
@@ -43,11 +43,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculate() {
         try {
-            /*var lHand = leftHand.text.toString()
+            var tNum = topNum.text.toString()
             var op = operand.text.toString()
-            var rHand = leftHand.text.toString()*/
+            var bNum = bottomNum.text.toString()
             var userAnswer  = enterAnswer.text.toString()
-            //var problem = problem.text.toString()
+            var problem = problem.text.toString()
 
             if (userAnswer == g.getAnswer()) {
                 result.text = "Correct!"
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 
         } catch (e : Exception) {
             Toast.makeText(this, "Invalid input", Toast.LENGTH_LONG).show()
-            //result.text = g.getPracticeNum().toString()
+            result.text = g.getPracticeNum().toString()
         }
     }
 

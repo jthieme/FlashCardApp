@@ -1,24 +1,22 @@
 package com.example.flashcardapp
 
-import androidx.appcompat.app.AppCompatActivity
+import Database
 import android.os.Bundle
 import android.widget.Button
-
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import java.lang.Exception
+import androidx.appcompat.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity() {
 
     private var g = Game()
-    private var sPN = SelectPracticeNumber()
+    private var db = Database()
+//    private var sPN = SelectPracticeNumber()
     private lateinit var enterAnswer : EditText
     private lateinit var result : TextView
-    /*private lateinit var leftHand : TextView
-    private lateinit var operand : TextView
-    private lateinit var rightHand : TextView*/
+
     private lateinit var problem : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,6 +67,16 @@ class MainActivity : AppCompatActivity() {
         g.setPracticeNum(1).toString()
         g.setOperand("x").toString()
         problem.text = "${g.getNewProblem()}"
+
+        // Testing Database
+        val users: MutableMap<String, Any> = HashMap()
+        users["firstName"] = "TEST"
+        users["lastName"] = "TEST AGAIN"
+        users["desc"] = "LAST TEST"
+
+        db.add(users)
+
+
 
       /*
         //This is for testing purposes to make sure the activity view looks good. Delete for optimized view changing.

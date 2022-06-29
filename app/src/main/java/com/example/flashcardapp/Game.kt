@@ -55,9 +55,16 @@ class Game {
     }
 
     /**********************************************************
+     * A function to get the generated number.
+     *********************************************************/
+    fun getGeneratedNum(): Int {
+        return generatedNum
+    }
+
+    /**********************************************************
      * A function to generate a new problem
      *********************************************************/
-    private fun generateProblem() {
+    fun generateProblem() {
         while (generatedNum in numsAlreadyUsed) {
             generatedNum = (1..12).random()
         }

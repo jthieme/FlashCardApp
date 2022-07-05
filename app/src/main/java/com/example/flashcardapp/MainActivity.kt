@@ -1,29 +1,29 @@
 package com.example.flashcardapp
 
-import androidx.appcompat.app.AppCompatActivity
+import Database
 import android.os.Bundle
 import android.widget.Button
-
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import java.lang.Exception
+import androidx.appcompat.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity() {
 
     private var g = Game()
-    private var sPN = SelectPracticeNumber()
-    private lateinit var enterAnswer : EditText
-    private lateinit var result : TextView
-    /*private lateinit var leftHand : TextView
-    private lateinit var operand : TextView
-    private lateinit var rightHand : TextView*/
-    private lateinit var problem : TextView
+    private var db = Database()
+
+    private lateinit var enterAnswer: EditText
+    private lateinit var result: TextView
+    private lateinit var topNum: TextView
+    private lateinit var bottomNum: TextView
+    private lateinit var operand: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_best_ui)
 
 
         val calculate = findViewById<Button>(R.id.calculate)
@@ -31,10 +31,9 @@ class MainActivity : AppCompatActivity() {
         calculate.setOnClickListener { calculate() }
 
         enterAnswer = findViewById(R.id.enterAnswer)
-        problem = findViewById(R.id.problem)
-        /*leftHand = findViewById(R.id.leftHand)
+        topNum = findViewById(R.id.topNum)
         operand = findViewById(R.id.operand)
-        rightHand = findViewById(R.id.rightHand)*/
+        bottomNum = findViewById(R.id.bottomNum)
         result = findViewById(R.id.result)
 
         setProblem()
@@ -43,11 +42,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculate() {
         try {
-            /*var lHand = leftHand.text.toString()
+            var topNum = topNum.text.toString()
             var op = operand.text.toString()
-            var rHand = leftHand.text.toString()*/
-            var userAnswer  = enterAnswer.text.toString()
-            //var problem = problem.text.toString()
+            var bottomNum = bottomNum.text.toString()
+            var userAnswer = enterAnswer.text.toString()
+
 
             if (userAnswer == g.getAnswer()) {
                 result.text = "Correct!"
@@ -59,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                 result.text = "Wrong!"
             }
 
-        } catch (e : Exception) {
+        } catch (e: Exception) {
             Toast.makeText(this, "Invalid input", Toast.LENGTH_LONG).show()
             //result.text = g.getPracticeNum().toString()
         }
@@ -68,13 +67,19 @@ class MainActivity : AppCompatActivity() {
     fun setProblem() {
         g.setPracticeNum(1).toString()
         g.setOperand("x").toString()
-        problem.text = "${g.getNewProblem()}"
+//        problem.text = "${g.getNewProblem()}"
+        g.generateProblem()
+        topNum.text = g.getPracticeNum().toString()
+        operand.text = g.getOperand().toString()
+        bottomNum.text = g.getGeneratedNum().toString()
 
-      /*
-        //This is for testing purposes to make sure the activity view looks good. Delete for optimized view changing.
-        val playButton = findViewById<Button>(R.id.play_button)
-        playButton.setOnClickListener { setContentView(R.layout.activity_number) }
-      */
+        // Testing Database
+        val users: MutableMap<String, Any> = HashMap()
+        users["firstName"] = "TEST"
+        users["lastName"] = "TEST AGAIN"
+        users["desc"] = "LAST TEST"
+
+        db.add(users)
+
     }
-
 }

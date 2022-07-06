@@ -108,6 +108,12 @@ class Game {
     fun getAnswer() : String {
         return answer.toString()
     }
+    /**********************************************************
+     * A function to return the numbers already used
+     *********************************************************/
+    fun getAlreadyUsedNums() : String {
+        return numsAlreadyUsed.toString()
+    }
 
 }
 

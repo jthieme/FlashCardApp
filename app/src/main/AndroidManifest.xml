@@ -19,7 +19,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".Number"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:parentActivityName=".Number">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Number" />
+        </activity>
+
     </application>
 
 </manifest>

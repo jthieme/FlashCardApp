@@ -22,6 +22,7 @@ class Number : AppCompatActivity() {
 
         // Get the value selected for practice number
         val selectNumber = findViewById<Spinner>(R.id.numberSpinner)
+
 //        val numValue = Integer.parseInt(selectNumber.toString())
 
         // Get which operand to use

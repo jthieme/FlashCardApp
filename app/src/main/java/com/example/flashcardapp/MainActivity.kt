@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import kotlin.Number
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,15 +23,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var topNum: TextView
     private lateinit var bottomNum: TextView
     private lateinit var operand: TextView
-
+    private lateinit var calculate : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        val calculate = findViewById<Button>(R.id.calculate)
-
+        calculate = findViewById<Button>(R.id.calculate)
         calculate.setOnClickListener { calculate() }
 
         enterAnswer = findViewById(R.id.enterAnswer)
@@ -39,24 +38,7 @@ class MainActivity : AppCompatActivity() {
         bottomNum = findViewById(R.id.bottomNum)
         result = findViewById(R.id.result)
 
-//        val userOperand = intent.getStringExtra("selectOperand")
-//        println("USER OPERAND IS THIS: " + userOperand.toString())
-
-        // Practice all of the numbers until all are used
-        if (g.getAlreadyUsedNums().length <= 13)
-//            userOperand?.let { setProblem(it) }
-            setProblem()
-        else {
-            // Disable the Calculate button
-            calculate?.isEnabled = false
-            calculate?.setTextColor(Color.WHITE)
-            calculate?.setBackgroundColor(Color.LTGRAY)
-
-            // Then go back and choose a new number / operand
-            val intent = Intent(this, Number::class.java)
-            startActivity(intent)
-        }
-
+        setProblem()
 
     }
 
@@ -71,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             if (userAnswer == g.getAnswer()) {
                 result.setTextColor(Color.GREEN)
                 result.text = "Correct"
+
                 // Testing Database
                 val users: MutableMap<String, Any> = HashMap()
                 users["practiceNum"] = topNum
@@ -81,7 +64,20 @@ class MainActivity : AppCompatActivity() {
                 db.add(users)
 
                 // Reset problem
-                setProblem()
+
+                // Practice all of the numbers until all are used
+                if (g.getAlreadyUsedNums().length <= 13)
+                    setProblem()
+                else {
+                    // Disable the Calculate button
+                    calculate?.isEnabled = false
+                    calculate?.setTextColor(Color.WHITE)
+                    calculate?.setBackgroundColor(Color.LTGRAY)
+
+                    // Then go back and choose a new number / operand
+                    val intent = Intent(this, Number::class.java)
+                    startActivity(intent)
+                }
 
             } else {
                 result.setTextColor(Color.RED)
@@ -90,16 +86,38 @@ class MainActivity : AppCompatActivity() {
 
         } catch (e: Exception) {
             Toast.makeText(this, "Invalid input", Toast.LENGTH_LONG).show()
-            //result.text = g.getPracticeNum().toString()
         }
     }
 
     fun setProblem() {
-        // Set the practice number
-        g.setPracticeNum(1).toString()
+        val userNum = intent.getStringExtra("selectNumber")
+        val userOperand = intent.getStringExtra("selectOperand")
+        println("USER NUM ${userNum}")
+        println("USER OPERAND ${userOperand}")
 
         // Set the operand
-        g.setOperand("x").toString()
+        when (userOperand) {
+            "Add (+)"-> g.setOperand("+")
+            "Subtract (-)"-> g.setOperand("-")
+            "Multiply (×)"-> g.setOperand("x")
+            "Divide (÷)"-> g.setOperand("/")
+        }
+
+        // Set the practice number
+        when (userNum) {
+            "Ones (1)"-> g.setPracticeNum(1)
+            "Twos (2)"-> g.setPracticeNum(2)
+            "Threes (3)"-> g.setPracticeNum(3)
+            "Fours (4)"-> g.setPracticeNum(4)
+            "Fives (5)"-> g.setPracticeNum(5)
+            "Sixes (6)"-> g.setPracticeNum(6)
+            "Sevens (7)"-> g.setPracticeNum(7)
+            "Eights (8)"-> g.setPracticeNum(8)
+            "Nines (9)"-> g.setPracticeNum(9)
+            "Tens (10)"-> g.setPracticeNum(10)
+            "Elevens (11)"-> g.setPracticeNum(11)
+            "Twelves (12)"-> g.setPracticeNum(12)
+        }
 
         // Generate the problem
         g.generateProblem()
@@ -108,9 +126,16 @@ class MainActivity : AppCompatActivity() {
         // operand, and the generated number
         // to individual text boxes
         topNum.text = g.getPracticeNum().toString()
-        operand.text = g.getOperand()
+
+        // Set the operand text to the appropriate symbol
+        when (g.getOperand()) {
+            "+"->operand.text = "+"
+            "-"->operand.text = "—"
+            "x"->operand.text = "×"
+            "/"->operand.text = "÷"
+        }
         bottomNum.text = g.getGeneratedNum().toString()
-//        result.text = "answer"
+
 
 
 

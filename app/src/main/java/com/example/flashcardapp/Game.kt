@@ -111,8 +111,8 @@ class Game {
     /**********************************************************
      * A function to return the numbers already used
      *********************************************************/
-    fun getAlreadyUsedNums() : String {
-        return numsAlreadyUsed.toString()
+    fun getAlreadyUsedNumsLength() : Int {
+        return numsAlreadyUsed.size
     }
 
 }

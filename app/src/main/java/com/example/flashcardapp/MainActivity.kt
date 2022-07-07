@@ -4,13 +4,14 @@ import Database
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import kotlin.Number
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -59,20 +60,20 @@ class MainActivity : AppCompatActivity() {
                 users["practiceNum"] = topNum
                 users["operand"] = operand.text
                 users["genNum"] = bottomNum
-                users["numsAlreadyUsed"] = g.getAlreadyUsedNums()
+                users["numsAlreadyUsed"] = g.getAlreadyUsedNumsLength()
 
                 db.add(users)
 
                 // Reset problem
 
                 // Practice all of the numbers until all are used
-                if (g.getAlreadyUsedNums().length <= 13)
+                if (g.getAlreadyUsedNumsLength() < 13)
                     setProblem()
                 else {
                     // Disable the Calculate button
-                    calculate?.isEnabled = false
-                    calculate?.setTextColor(Color.WHITE)
-                    calculate?.setBackgroundColor(Color.LTGRAY)
+//                    calculate?.isEnabled = false
+//                    calculate?.setTextColor(Color.WHITE)
+//                    calculate?.setBackgroundColor(Color.LTGRAY)
 
                     // Then go back and choose a new number / operand
                     val intent = Intent(this, Number::class.java)
@@ -86,6 +87,7 @@ class MainActivity : AppCompatActivity() {
 
         } catch (e: Exception) {
             Toast.makeText(this, "Invalid input", Toast.LENGTH_LONG).show()
+            Log.e("MainActivity", e.toString())
         }
     }
 

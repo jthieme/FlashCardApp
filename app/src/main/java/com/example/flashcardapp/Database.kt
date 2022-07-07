@@ -9,7 +9,7 @@ class Database {
 
     fun add(user : Map<String, Any>) {
         // Add a new document with a generated ID
-        db.collection("users")
+        db.collection("problems")
             .add(user)
             .addOnSuccessListener { documentReference ->
                 Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")

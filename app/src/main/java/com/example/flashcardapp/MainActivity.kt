@@ -89,35 +89,66 @@ class MainActivity : AppCompatActivity() {
 
     fun setProblem() {
 
-
+        val userPractice = intent.getStringExtra("userPractice")
+        val userOperator = intent.getStringExtra("userOperator")
+        val userGenNumber = intent.getStringExtra("userGenNumber")
+//        val userPractice = intent.getStringExtra("userPractice")
+//        println("SET PROBLEM - USER DATA IS: ${userData}")
 
         val userNum = intent.getStringExtra("selectNumber")
         val userOperand = intent.getStringExtra("selectOperand")
         println("USER NUM ${userNum}")
         println("USER OPERAND ${userOperand}")
 
-        // Set the operand
-        when (userOperand) {
-            "Add (+)"-> g.setOperand("+")
-            "Subtract (-)"-> g.setOperand("-")
-            "Multiply (×)"-> g.setOperand("x")
-            "Divide (÷)"-> g.setOperand("/")
-        }
+        if (userPractice != null) {
+            // Set the operand
+            when (userOperator) {
+                "+"-> g.setOperand("+")
+                "-"-> g.setOperand("-")
+                "×"-> g.setOperand("x")
+                "÷"-> g.setOperand("/")
+            }
 
-        // Set the practice number
-        when (userNum) {
-            "Ones (1)"-> g.setPracticeNum(1)
-            "Twos (2)"-> g.setPracticeNum(2)
-            "Threes (3)"-> g.setPracticeNum(3)
-            "Fours (4)"-> g.setPracticeNum(4)
-            "Fives (5)"-> g.setPracticeNum(5)
-            "Sixes (6)"-> g.setPracticeNum(6)
-            "Sevens (7)"-> g.setPracticeNum(7)
-            "Eights (8)"-> g.setPracticeNum(8)
-            "Nines (9)"-> g.setPracticeNum(9)
-            "Tens (10)"-> g.setPracticeNum(10)
-            "Elevens (11)"-> g.setPracticeNum(11)
-            "Twelves (12)"-> g.setPracticeNum(12)
+            // Set the practice number
+            when (userPractice) {
+                "1"-> g.setPracticeNum(1)
+                "2"-> g.setPracticeNum(2)
+                "3"-> g.setPracticeNum(3)
+                "4"-> g.setPracticeNum(4)
+                "5"-> g.setPracticeNum(5)
+                "6"-> g.setPracticeNum(6)
+                "7"-> g.setPracticeNum(7)
+                "8"-> g.setPracticeNum(8)
+                "9"-> g.setPracticeNum(9)
+                "10"-> g.setPracticeNum(10)
+                "11"-> g.setPracticeNum(11)
+                "12"-> g.setPracticeNum(12)
+            }
+        } else {
+
+            // Set the operand
+            when (userOperand) {
+                "Add (+)" -> g.setOperand("+")
+                "Subtract (-)" -> g.setOperand("-")
+                "Multiply (×)" -> g.setOperand("x")
+                "Divide (÷)" -> g.setOperand("/")
+            }
+
+            // Set the practice number
+            when (userNum) {
+                "Ones (1)" -> g.setPracticeNum(1)
+                "Twos (2)" -> g.setPracticeNum(2)
+                "Threes (3)" -> g.setPracticeNum(3)
+                "Fours (4)" -> g.setPracticeNum(4)
+                "Fives (5)" -> g.setPracticeNum(5)
+                "Sixes (6)" -> g.setPracticeNum(6)
+                "Sevens (7)" -> g.setPracticeNum(7)
+                "Eights (8)" -> g.setPracticeNum(8)
+                "Nines (9)" -> g.setPracticeNum(9)
+                "Tens (10)" -> g.setPracticeNum(10)
+                "Elevens (11)" -> g.setPracticeNum(11)
+                "Twelves (12)" -> g.setPracticeNum(12)
+            }
         }
 
         // Generate the problem

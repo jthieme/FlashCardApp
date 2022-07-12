@@ -20,27 +20,40 @@ class Database {
 //            }
     }
 
-    fun userExists(userName : String, user : DatabaseUser) : Boolean {
-        var exists = false
-        val collec = db.collection("users")
-        val doc = collec.document(userName)
-
+    fun userExists(userName : String, user : DatabaseUser) {
+        var userData : MutableList<String> = mutableListOf()
+        val collect = db.collection("users")
+        val doc = collect.document(userName)
 
         doc.get()
             .addOnSuccessListener { document ->
-                if (document != null) {
+                if (document != null && document.exists()) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    exists = true
-                    user.handleResult()
+                    println("USER DATA BEFORE SETTING: ${userData.toList()}")
+
+                    var pNum = document.getData()?.get("practiceNum").toString()
+                    var operator = document.getData()?.get("operand").toString()
+                    var gNum = document.getData()?.get("genNum").toString()
+                    var alreadyUsed = document.getData()?.get("numsAlreadyUsed").toString()
+
+                    userData.add(pNum)
+                    userData.add(operator)
+                    userData.add(gNum)
+                    userData.add(alreadyUsed)
+
+                    println("USER DATA AFTER SETTING: ${userData.toList()}")
+
+
+                    user.handleResult(true, userData)
                 } else {
                     Log.d(TAG, "No such document")
-                    exists = false
+                    user.handleResult(false, userData)
                 }
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
+                user.handleResult(false, userData)
             }
-        return exists
     }
 
     fun read(userName : String) : Array<String> {

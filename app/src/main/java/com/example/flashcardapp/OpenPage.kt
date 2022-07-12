@@ -11,6 +11,7 @@ class OpenPage : AppCompatActivity(), DatabaseUser {
 
     private var db = Database()
     private lateinit var userName : EditText
+    private lateinit var userResult : MutableList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,24 +23,29 @@ class OpenPage : AppCompatActivity(), DatabaseUser {
 
 
         buttonClick.setOnClickListener {
-            println("OPEN PAGE - USER NAME IS: ${userName.text}")
-            if (db.userExists(userName.text.toString(), this)) {
-                handleResult()
-            } else {
-                val intent = Intent(this, StartNewGame::class.java)
-                intent.putExtra("userName", userName.text.toString())
-                startActivity(intent)
-            }
-
-
+            // Check to see if the user exists in the database
+            db.userExists(userName.text.toString(), this)
+//            println("BUTTON CLICK - ${userResult}")
 
         }
     }
 
-    override fun handleResult() {
-        val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("userName", userName.text.toString())
-        startActivity(intent)
+    override fun handleResult(result : Boolean, userResult : MutableList<String>) {
+        if (result) {
+            // The user already exists ... play game
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("userName", userName.text.toString())
+            intent.putExtra("userPractice", userResult[0])
+            intent.putExtra("userOperator", userResult[1])
+            intent.putExtra("userGenNumber", userResult[2])
+            intent.putExtra("userNumsAlreadyUsed", userResult[3])
+            startActivity(intent)
+        } else {
+            // New user ... need to ask them what number and operator they want to use
+            val intent = Intent(this, StartNewGame::class.java)
+            intent.putExtra("userName", userName.text.toString())
+            startActivity(intent)
+        }
 
     }
 }

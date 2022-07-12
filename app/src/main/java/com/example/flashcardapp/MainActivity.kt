@@ -10,9 +10,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,20 +46,24 @@ class MainActivity : AppCompatActivity() {
             var op = operand.text.toString()
             var bottomNum = bottomNum.text.toString()
             var userAnswer = enterAnswer.text.toString()
+            val userName = intent.getStringExtra("userName")
+
+            println("USER NAME IS: ${userName}")
 
 
-            if (userAnswer == g.getAnswer()) {
+            if (g.isCorrect(userAnswer.toInt())) {
                 result.setTextColor(Color.GREEN)
                 result.text = "Correct"
 
                 // Testing Database
-                val users: MutableMap<String, Any> = HashMap()
-                users["practiceNum"] = topNum
-                users["operand"] = operand.text
-                users["genNum"] = bottomNum
-                users["numsAlreadyUsed"] = g.getAlreadyUsedNumsLength()
+                val user: MutableMap<String, Any> = HashMap()
+                user["name"] = userName.toString()
+                user["practiceNum"] = topNum
+                user["operand"] = operand.text
+                user["genNum"] = bottomNum
+                user["numsAlreadyUsed"] = g.getAlreadyUsedNumsLength()
 
-                db.add(users)
+                db.addCorrectProblem(user)
 
                 // Reset problem
 
@@ -70,13 +71,8 @@ class MainActivity : AppCompatActivity() {
                 if (g.getAlreadyUsedNumsLength() < 13)
                     setProblem()
                 else {
-                    // Disable the Calculate button
-//                    calculate?.isEnabled = false
-//                    calculate?.setTextColor(Color.WHITE)
-//                    calculate?.setBackgroundColor(Color.LTGRAY)
-
                     // Then go back and choose a new number / operand
-                    val intent = Intent(this, Number::class.java)
+                    val intent = Intent(this, StartNewGame::class.java)
                     startActivity(intent)
                 }
 
@@ -92,6 +88,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setProblem() {
+
+
+
         val userNum = intent.getStringExtra("selectNumber")
         val userOperand = intent.getStringExtra("selectOperand")
         println("USER NUM ${userNum}")

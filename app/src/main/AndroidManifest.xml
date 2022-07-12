@@ -20,13 +20,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".OpenPage"/>
-        <activity android:name=".Number"
+        <activity android:name=".StartNewGame"
             android:parentActivityName=".OpenPage"
 
             />
 
         <activity android:name=".MainActivity"
-            android:parentActivityName=".Number"
+            android:parentActivityName=".StartNewGame"
             />
     </application>
 

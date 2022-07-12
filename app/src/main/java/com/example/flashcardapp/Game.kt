@@ -70,14 +70,38 @@ class Game {
         }
         when (operand) {
             "x" -> answer = practiceNum * generatedNum
-            "/" -> answer = practiceNum / generatedNum
+            "/" -> {
+                if (generatedNum > practiceNum) {
+                    answer = generatedNum / practiceNum
+                } else {
+                    answer = practiceNum / generatedNum
+                }
+            }
+
             "+" -> answer = practiceNum + generatedNum
-            "-" -> answer = practiceNum - generatedNum
+            "-" -> {
+                if (generatedNum > practiceNum) {
+                    answer = generatedNum / practiceNum
+                } else {
+                    answer = practiceNum / generatedNum
+                }
+            }
         }
         numsAlreadyUsed.add(generatedNum)
-        currentProblem[0] = practiceNum.toString()
-        currentProblem[1] = operand
-        currentProblem[2] = generatedNum.toString()
+
+        // If the randomly selected number is greater than the user-chosen
+        // practice number, AND the user is working with subtraction or division,
+        // make the generated number first to prevent
+        // having to deal with negatives
+        if ((generatedNum > practiceNum) && (operand == "-" || operand == "/")) {
+            currentProblem[0] = generatedNum.toString()
+            currentProblem[1] = operand
+            currentProblem[2] = practiceNum.toString()
+        } else { // Otherwise keep it the same
+            currentProblem[0] = practiceNum.toString()
+            currentProblem[1] = operand
+            currentProblem[2] = generatedNum.toString()
+        }
     }
 
     /**********************************************************

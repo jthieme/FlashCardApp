@@ -6,30 +6,35 @@ This app will allow anyone to practice the following types of math:
 * Multiplication
 * Division
 
+This app also allows for the above types of math for the numbers 1 - 12.
+
 Although this is geared more for children, anyone with an Android
 phone will be able to use it!
 
-[Software Demo Video](http://youtube.link.goes.here)
-
 # Development Environment
-
-{Describe the tools that you used to develop the software}
-
-{Describe the programming language that you used and any libraries.}
+Firebase Firestore
+Android Studio
+Android Kotlin
+Windows / Mac laptops
 
 # Collaborators
-
-{Provide a list of everyone on your team}
+Star Balls
+Emilio Regino
+Cayleigh Leishman
+Pun Tangsiriruangrit
+Sabrina Dawson
+Josh Thieme
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
+* [Firebase Docs](https://firebase.google.com/docs/firestore?authuser=0&hl=en)
+* [Android Studio Docs](https://developer.android.com/docs)
+* [Geeks for Geeks](http://geeksforgeeks.com)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* Include decimals for division problems
+* Include grade levels instead of simply choosing which numbers and operators to use
+* Nix negative numbers based on grade level
+* Have a reward system
+* A more formal login page with authentication

@@ -29,7 +29,7 @@ class Database {
             .addOnSuccessListener { document ->
                 if (document != null && document.exists()) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    println("USER DATA BEFORE SETTING: ${userData.toList()}")
+//                    println("USER DATA BEFORE SETTING: ${userData.toList()}")
 
                     var pNum = document.getData()?.get("practiceNum").toString()
                     var operator = document.getData()?.get("operand").toString()
@@ -41,9 +41,7 @@ class Database {
                     userData.add(gNum)
                     userData.add(alreadyUsed)
 
-                    println("USER DATA AFTER SETTING: ${userData.toList()}")
-
-
+//                    println("USER DATA AFTER SETTING: ${userData.toList()}")
                     user.handleResult(true, userData)
                 } else {
                     Log.d(TAG, "No such document")

@@ -4,91 +4,73 @@ import com.example.flashcardapp.DatabaseUser
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
+/**************************************
+* DATABASE
+* This class will not only connect to
+* the database, it will also allow for
+* reading and writing of data
+* (user and problem)
+***************************************/
 class Database {
 
+    // Initialize the database connection
     val db = Firebase.firestore
 
+    /****************************************
+    * ADD CORRECT PROBLEM
+    * This method adds the current correct
+    * problem to the user's document in Firebase
+    *****************************************/
     fun addCorrectProblem(user : Map<String, Any>) {
         // Add a new document with a generated ID
         db.collection("users")
             .document(user["name"].toString()).set(user)
-//            .addOnSuccessListener { documentReference ->
-//                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-//            }
-//            .addOnFailureListener { e ->
-//                Log.w(TAG, "Error adding document", e)
-//            }
     }
 
+    /****************************************
+     * USER EXISTS
+     * This method will check and return
+     * true / false if the username entered
+     * exists in the database
+     *****************************************/
     fun userExists(userName : String, user : DatabaseUser) {
+        // Initialize list to hold user data
         var userData : MutableList<String> = mutableListOf()
-        val collect = db.collection("users")
-        val doc = collect.document(userName)
 
-        doc.get()
+        // Check to see if the user exists
+        db.collection("users").document(userName).get()
             .addOnSuccessListener { document ->
-                if (document != null && document.exists()) {
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-//                    println("USER DATA BEFORE SETTING: ${userData.toList()}")
 
+                // If the user does exist and their document is not empty
+                if (document != null && document.exists()) {
+
+                    // Get all of the relevant information
                     var pNum = document.getData()?.get("practiceNum").toString()
                     var operator = document.getData()?.get("operand").toString()
                     var gNum = document.getData()?.get("genNum").toString()
                     var alreadyUsed = document.getData()?.get("numsAlreadyUsed").toString()
 
+                    // Save it to the list
                     userData.add(pNum)
                     userData.add(operator)
                     userData.add(gNum)
                     userData.add(alreadyUsed)
 
-//                    println("USER DATA AFTER SETTING: ${userData.toList()}")
+                    // Return true (user exists)
                     user.handleResult(true, userData)
+                // Otherwise
                 } else {
-                    Log.d(TAG, "No such document")
+                    // Return false (user does not exist)
                     user.handleResult(false, userData)
                 }
-            }
+            } // If something went wrong
             .addOnFailureListener { exception ->
+                // Throw and exception
                 Log.d(TAG, "get failed with ", exception)
+
+                // Return false
                 user.handleResult(false, userData)
             }
     }
 
-    fun read(userName : String) : Array<String> {
-
-        var userData : Array<String> = emptyArray()
-
-        db.collection("users").document(userName).get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-
-                    var pNum = document.getData()?.get("practiceNum").toString()
-                    var operator = document.getData()?.get("operand").toString()
-                    var gNum = document.getData()?.get("genNum").toString()
-                    var alreadyUsed = document.getData()?.get("alreadyUsedNums").toString()
-
-                    userData.set(0, pNum)
-                    userData.set(1, operator)
-                    userData.set(2, gNum)
-                    userData.set(3, alreadyUsed)
-
-                } else {
-                    Log.d(TAG, "No such document")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
-        return userData
-    }
-
-    fun addUser(userName : String) {
-        var userData : MutableMap<String, Any> = mutableMapOf()
-        userData["practiceNum"] = ""
-        userData["operator"] = ""
-        userData["genNum"] = ""
-        userData["numsAlreadyUsed"] = ""
-        db.collection("users").document(userName).set(userData)
-    }
 }

@@ -70,22 +70,9 @@ class Game {
         }
         when (operand) {
             "x" -> answer = practiceNum * generatedNum
-            "/" -> {
-//                if (generatedNum > practiceNum) {
-//                    answer = generatedNum / practiceNum
-//                } else {
-                    answer = practiceNum / generatedNum
-//                }
-            }
-
+            "/" -> answer = practiceNum / generatedNum
             "+" -> answer = practiceNum + generatedNum
-            "-" -> {
-//                if (generatedNum > practiceNum) {
-//                    answer = generatedNum / practiceNum
-//                } else {
-                    answer = practiceNum - generatedNum
-//                }
-            }
+            "-" -> answer = practiceNum - generatedNum
         }
         numsAlreadyUsed.add(generatedNum)
 

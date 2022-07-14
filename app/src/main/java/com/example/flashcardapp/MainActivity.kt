@@ -11,11 +11,18 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
+/**************************************
+* MAIN ACTIVITY
+* This class will be the main practice
+* number page.
+***************************************/
 class MainActivity : AppCompatActivity() {
 
+    // Initialize other classes used
     private var g = Game()
     private var db = Database()
 
+    // Initialize member variables (attributes)
     private lateinit var enterAnswer: EditText
     private lateinit var result: TextView
     private lateinit var topNum: TextView
@@ -27,35 +34,44 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Get the ids for all of the elements on the screen
         calculate = findViewById<Button>(R.id.calculate)
-        calculate.setOnClickListener { calculate() }
-
         enterAnswer = findViewById(R.id.enterAnswer)
         topNum = findViewById(R.id.topNum)
         operand = findViewById(R.id.operand)
         bottomNum = findViewById(R.id.bottomNum)
         result = findViewById(R.id.result)
 
-        setProblem()
+        // Listen for the "Submit" button to be clicked
+        calculate.setOnClickListener { determineResult() }
 
+        // Set each new problem based on the user selected
+        // practice number and operator with a randomly selected number
+        setProblem()
     }
 
-    private fun calculate() {
+    /**************************************
+    * CALCULATE
+    * This method will display the result
+    * as being "Correct" or "Wrong" based
+    * on the users entered answer, and
+    * the correct answer from the Game class
+    ***************************************/
+    private fun determineResult() {
         try {
             var topNum = topNum.text.toString()
-            var op = operand.text.toString()
             var bottomNum = bottomNum.text.toString()
             var userAnswer = enterAnswer.text.toString()
             val userName = intent.getStringExtra("userName")
 
-            println("USER NAME IS: ${userName}")
-
-
+            // If the correct answer is given
             if (g.isCorrect(userAnswer.toInt())) {
+                // Set the result text color to green
                 result.setTextColor(Color.GREEN)
+                // Display the result
                 result.text = "Correct"
 
-                // Testing Database
+                // Gather the information
                 val user: MutableMap<String, Any> = HashMap()
                 user["name"] = userName.toString()
                 user["practiceNum"] = topNum
@@ -63,9 +79,8 @@ class MainActivity : AppCompatActivity() {
                 user["genNum"] = bottomNum
                 user["numsAlreadyUsed"] = g.getAlreadyUsedNumsLength()
 
+                // Send it to the database to be saved
                 db.addCorrectProblem(user)
-
-                // Reset problem
 
                 // Practice all of the numbers until all are used
                 if (g.getAlreadyUsedNumsLength() < 13)
@@ -75,31 +90,49 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, StartNewGame::class.java)
                     startActivity(intent)
                 }
-
+            // If the wrong answer was provided
             } else {
+                // Set the result text color to red
                 result.setTextColor(Color.RED)
+
+                // Display message
                 result.text = "Wrong"
             }
-
+        // If anything goes wrong
         } catch (e: Exception) {
+            // Display an error to the screen
             Toast.makeText(this, "Invalid input", Toast.LENGTH_LONG).show()
+
+            // Log the problem
             Log.e("MainActivity", e.toString())
         }
     }
 
+    /**************************************
+    * SET PROBLEM
+    * This method will set the problem to
+    * the provided practice number and
+    * operator for first time new users or
+    * to the last saved practice number and
+    * operator for returning users
+    ***************************************/
     fun setProblem() {
 
+        // For returning users:
+        // Get the practice number and operator
+        // that was passed from OpenPage
         val userPractice = intent.getStringExtra("userPractice")
         val userOperator = intent.getStringExtra("userOperator")
-        val userGenNumber = intent.getStringExtra("userGenNumber")
-//        val userPractice = intent.getStringExtra("userPractice")
-//        println("SET PROBLEM - USER DATA IS: ${userData}")
 
+        // For first time users:
+        // Get the practice number and operator
+        // that was passed from StartNewGame
         val userNum = intent.getStringExtra("selectNumber")
         val userOperand = intent.getStringExtra("selectOperand")
         println("USER NUM ${userNum}")
         println("USER OPERAND ${userOperand}")
 
+        // If this is a returning user
         if (userPractice != null) {
             // Set the operand
             when (userOperator) {
@@ -124,8 +157,8 @@ class MainActivity : AppCompatActivity() {
                 "11"-> g.setPracticeNum(11)
                 "12"-> g.setPracticeNum(12)
             }
+        // Otherwise for first time users
         } else {
-
             // Set the operand
             when (userOperand) {
                 "Add (+)" -> g.setOperand("+")
@@ -154,9 +187,7 @@ class MainActivity : AppCompatActivity() {
         // Generate the problem
         g.generateProblem()
 
-        // This will set the practice number,
-        // operand, and the generated number
-        // to individual text boxes
+        // Set the practice number
         topNum.text = g.getPracticeNum().toString()
 
         // Set the operand text to the appropriate symbol
@@ -166,10 +197,7 @@ class MainActivity : AppCompatActivity() {
             "x"->operand.text = "×"
             "/"->operand.text = "÷"
         }
+        // Set the randomly generated number from the Game class
         bottomNum.text = g.getGeneratedNum().toString()
-
-
-
-
     }
 }

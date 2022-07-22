@@ -11,6 +11,11 @@ This app also allows for the above types of math for the numbers 1 - 12.
 Although this is geared more for children, anyone with an Android
 phone will be able to use it!
 
+# Installation
+Download this APK: [Download FlashCardApp](app-debug.apk)
+
+You may need to allow permissions on your mobile web browser to enable this to be downloaded successfully.
+
 # Development Environment
 Firebase Firestore
 Android Studio

@@ -14,20 +14,19 @@
         android:text="@string/welcome"
         android:textColor="#000000"
         android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/centerLeft"
+        app:layout_constraintRight_toLeftOf="@id/centerRight"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/play_button2"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="59dp"
         android:text="@string/play_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.603"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintLeft_toRightOf="@id/centerLeft"
+        app:layout_constraintRight_toLeftOf="@id/centerRight" />
 
     <TextView
         android:id="@+id/textView5"
@@ -36,23 +35,35 @@
         android:layout_marginTop="287dp"
         android:text="@string/enter_user_name"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.432"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/centerLeft"
+        app:layout_constraintRight_toLeftOf="@+id/centerRight"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/userName"
-        android:layout_width="347dp"
+        android:layout_width="0dp"
         android:layout_height="65dp"
         android:layout_marginTop="332dp"
         android:ems="10"
         android:hint="User Name"
         android:inputType="textPersonName"
         android:paddingStart="10px"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.56"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/centerLeft"
+        app:layout_constraintRight_toLeftOf="@+id/centerRight"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/centerLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/centerRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

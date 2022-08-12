@@ -8,88 +8,88 @@
 
     <Button
         android:id="@+id/calculate"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="40dp"
         android:text="submit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/main_centerLeft"
+        app:layout_constraintRight_toLeftOf="@id/main_centerRight"
         app:layout_constraintTop_toBottomOf="@+id/border" />
 
     <TextView
         android:id="@+id/topNum"
-        android:layout_width="146dp"
+        android:layout_width="0dp"
         android:layout_height="98dp"
-        android:layout_marginEnd="92dp"
         android:text="11"
         android:textAlignment="center"
         android:textColor="#2196F3"
         android:textSize="80dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/bottomNum"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/main_numRight"
+        app:layout_constraintLeft_toRightOf="@id/main_numLeft"
         app:layout_constraintTop_toTopOf="@+id/border" />
 
     <TextView
 
         android:id="@+id/bottomNum"
-        android:layout_width="124dp"
+        android:layout_width="0dp"
         android:layout_height="106dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="104dp"
         android:text="22"
         android:textAlignment="center"
         android:textColor="#4CAF50"
         android:textSize="80dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/main_numRight"
+        app:layout_constraintLeft_toRightOf="@id/main_numLeft"
         app:layout_constraintTop_toBottomOf="@+id/topNum" />
 
     <TextView
         android:id="@+id/operand"
-        android:layout_width="84dp"
+        android:layout_width="0dp"
         android:layout_height="77dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="165dp"
         android:text="X"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#FF9800"
         android:textSize="60dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/bottomNum"
+        app:layout_constraintRight_toLeftOf="@id/main_operandRight"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topNum" />
+        app:layout_constraintLeft_toRightOf="@id/main_centerLeftDivider"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/enterAnswer"
-        android:layout_width="276dp"
+        android:layout_width="0dp"
         android:layout_height="115dp"
         android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="answer"
         android:inputType="numberSigned|number"
         android:textAlignment="center"
-        android:textSize="75sp"
+        android:textSize="68sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/result"
-        app:layout_constraintEnd_toEndOf="@+id/border"
-        app:layout_constraintStart_toStartOf="@+id/border"
+        app:layout_constraintRight_toLeftOf="@id/main_centerRightDivider"
+        app:layout_constraintLeft_toRightOf="@id/main_centerLeftDivider"
         app:layout_constraintTop_toBottomOf="@id/view"
         app:layout_constraintVertical_bias="0.153"
         tools:ignore="TouchTargetSizeCheck" />
 
     <View
         android:id="@+id/view"
-        android:layout_width="340dp"
+        android:layout_width="0dp"
         android:layout_height="6dp"
         android:layout_marginTop="12dp"
         android:background="@color/design_default_color_primary"
-        app:layout_constraintEnd_toEndOf="@+id/border"
-        app:layout_constraintStart_toStartOf="@+id/border"
+        app:layout_constraintLeft_toRightOf="@+id/main_centerLeft"
+        app:layout_constraintRight_toLeftOf="@+id/main_centerRight"
         app:layout_constraintTop_toBottomOf="@+id/bottomNum" />
 
     <TextView
@@ -97,31 +97,78 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
         android:background="@drawable/textview_border"
         android:text=" "
         app:layout_constraintBottom_toTopOf="@+id/calculate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/main_centerLeft"
+        app:layout_constraintRight_toLeftOf="@id/main_centerRight"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/result"
-        android:layout_width="135dp"
-        android:layout_height="85dp"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="20dp"
-        android:text="result"
+        android:layout_marginBottom="30dp"
+        android:hint="result"
         android:textAlignment="center"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/calculate"
-        app:layout_constraintEnd_toEndOf="@+id/border"
-        app:layout_constraintStart_toStartOf="@+id/border"
+        app:layout_constraintLeft_toRightOf="@id/main_centerLeftDivider"
+        app:layout_constraintRight_toLeftOf="@id/main_centerRightDivider"
         app:layout_constraintTop_toBottomOf="@+id/view"
         app:layout_constraintVertical_bias="0.912" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_centerLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_centerRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_centerLeftDivider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.20" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_centerRightDivider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.80" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_operandRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_numLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.44" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_numRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.70" />
 </androidx.constraintlayout.widget.ConstraintLayout>

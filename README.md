@@ -1,5 +1,4 @@
 # Overview
-
 This app will allow anyone to practice the following types of math:
 * Addition
 * Subtraction
@@ -11,33 +10,33 @@ This app also allows for the above types of math for the numbers 1 - 12.
 Although this is geared more for children, anyone with an Android
 phone will be able to use it!
 
-# Installation
+## Installation
+*Android Devices Only*
+
 Download this APK: [Download FlashCardApp](app-debug.apk)
 
 You may need to allow permissions on your mobile web browser to enable this to be downloaded successfully.
 
-# Development Environment
-Firebase Firestore
-Android Studio
-Android Kotlin
-Windows / Mac laptops
+## Development Environment
+* Firebase Firestore
+* Android Studio
+* Android Kotlin
+* Windows / Mac laptops
 
-# Collaborators
-Star Balls
-Emilio Regino
-Cayleigh Leishman
-Pun Tangsiriruangrit
-Sabrina Dawson
-Josh Thieme
+## Collaborators
+* Star Balls
+* Emilio Regino
+* Cayleigh Leishman
+* Pun Tangsiriruangrit
+* Sabrina Dawson
+* Josh Thieme
 
-# Useful Websites
-
+### Useful Websites
 * [Firebase Docs](https://firebase.google.com/docs/firestore?authuser=0&hl=en)
 * [Android Studio Docs](https://developer.android.com/docs)
 * [Geeks for Geeks](http://geeksforgeeks.com)
 
-# Future Work
-
+### Future Work
 * Include decimals for division problems
 * Include grade levels instead of simply choosing which numbers and operators to use
 * Nix negative numbers based on grade level

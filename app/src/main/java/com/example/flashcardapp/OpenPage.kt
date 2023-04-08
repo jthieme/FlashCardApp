@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 class OpenPage : AppCompatActivity(), DatabaseUser {
 
     // Initialize member variables (attributes)
-    private var db = Database()
+    private val db = Database()
     private lateinit var userName : EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {

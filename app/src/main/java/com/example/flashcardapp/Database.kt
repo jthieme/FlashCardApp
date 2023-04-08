@@ -35,7 +35,7 @@ class Database {
      *****************************************/
     fun userExists(userName : String, user : DatabaseUser) {
         // Initialize list to hold user data
-        var userData : MutableList<String> = mutableListOf()
+        val userData : MutableList<String> = mutableListOf()
 
         // Check to see if the user exists
         db.collection("users").document(userName).get()
@@ -45,10 +45,10 @@ class Database {
                 if (document != null && document.exists()) {
 
                     // Get all of the relevant information
-                    var pNum = document.getData()?.get("practiceNum").toString()
-                    var operator = document.getData()?.get("operand").toString()
-                    var gNum = document.getData()?.get("genNum").toString()
-                    var alreadyUsed = document.getData()?.get("numsAlreadyUsed").toString()
+                    val pNum = document.getData()?.get("practiceNum").toString()
+                    val operator = document.getData()?.get("operand").toString()
+                    val gNum = document.getData()?.get("genNum").toString()
+                    val alreadyUsed = document.getData()?.get("numsAlreadyUsed").toString()
 
                     // Save it to the list
                     userData.add(pNum)

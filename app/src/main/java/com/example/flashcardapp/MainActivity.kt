@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Get the ids for all of the elements on the screen
-        calculate = findViewById<Button>(R.id.calculate)
+        calculate = findViewById(R.id.calculate)
         enterAnswer = findViewById(R.id.enterAnswer)
         topNum = findViewById(R.id.topNum)
         operand = findViewById(R.id.operand)
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**************************************
-    * CALCULATE
+    * DETERMINE RESULT
     * This method will display the result
     * as being "Correct" or "Wrong" based
     * on the users entered answer, and
@@ -109,6 +109,73 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**************************************
+     * SET OPERAND
+     * This method will set the operand to
+     * the different types depending on the
+     * userType, being a returning user, or
+     * a first time user
+     ***************************************/
+    fun setOperand(userOperator : String?, userType : String) {
+        if (userType == "returning"){
+            when (userOperator) {
+                "+"-> g.setOperand("+")
+                "-"-> g.setOperand("-")
+                "×"-> g.setOperand("x")
+                "÷"-> g.setOperand("/")
+            }
+        } else {
+            when (userOperator) {
+                "Add (+)" -> g.setOperand("+")
+                "Subtract (-)" -> g.setOperand("-")
+                "Multiply (×)" -> g.setOperand("x")
+                "Divide (÷)" -> g.setOperand("/")
+            }
+        }
+
+    }
+
+    /**************************************
+     * SET PRACTICE NUMBER
+     * This method will set the practice
+     * number to the different numbers
+     * depending on the userType, being a
+     * returning user, or a first time user
+     ***************************************/
+    fun setPracticeNumber(userPracticeNum : String?, userType: String) {
+        if (userType == "returning") {
+            when (userPracticeNum) {
+                "1"-> g.setPracticeNum(1)
+                "2"-> g.setPracticeNum(2)
+                "3"-> g.setPracticeNum(3)
+                "4"-> g.setPracticeNum(4)
+                "5"-> g.setPracticeNum(5)
+                "6"-> g.setPracticeNum(6)
+                "7"-> g.setPracticeNum(7)
+                "8"-> g.setPracticeNum(8)
+                "9"-> g.setPracticeNum(9)
+                "10"-> g.setPracticeNum(10)
+                "11"-> g.setPracticeNum(11)
+                "12"-> g.setPracticeNum(12)
+            }
+        } else {
+            when (userPracticeNum) {
+                "Ones (1)" -> g.setPracticeNum(1)
+                "Twos (2)" -> g.setPracticeNum(2)
+                "Threes (3)" -> g.setPracticeNum(3)
+                "Fours (4)" -> g.setPracticeNum(4)
+                "Fives (5)" -> g.setPracticeNum(5)
+                "Sixes (6)" -> g.setPracticeNum(6)
+                "Sevens (7)" -> g.setPracticeNum(7)
+                "Eights (8)" -> g.setPracticeNum(8)
+                "Nines (9)" -> g.setPracticeNum(9)
+                "Tens (10)" -> g.setPracticeNum(10)
+                "Elevens (11)" -> g.setPracticeNum(11)
+                "Twelves (12)" -> g.setPracticeNum(12)
+            }
+        }
+    }
+
+    /**************************************
     * SET PROBLEM
     * This method will set the problem to
     * the provided practice number and
@@ -135,53 +202,18 @@ class MainActivity : AppCompatActivity() {
         // If this is a returning user
         if (userPractice != null) {
             // Set the operand
-            when (userOperator) {
-                "+"-> g.setOperand("+")
-                "-"-> g.setOperand("-")
-                "×"-> g.setOperand("x")
-                "÷"-> g.setOperand("/")
-            }
+            setOperand(userOperator, "returning")
 
             // Set the practice number
-            when (userPractice) {
-                "1"-> g.setPracticeNum(1)
-                "2"-> g.setPracticeNum(2)
-                "3"-> g.setPracticeNum(3)
-                "4"-> g.setPracticeNum(4)
-                "5"-> g.setPracticeNum(5)
-                "6"-> g.setPracticeNum(6)
-                "7"-> g.setPracticeNum(7)
-                "8"-> g.setPracticeNum(8)
-                "9"-> g.setPracticeNum(9)
-                "10"-> g.setPracticeNum(10)
-                "11"-> g.setPracticeNum(11)
-                "12"-> g.setPracticeNum(12)
-            }
+            setPracticeNumber(userPractice, "returning")
+
         // Otherwise for first time users
         } else {
             // Set the operand
-            when (userOperand) {
-                "Add (+)" -> g.setOperand("+")
-                "Subtract (-)" -> g.setOperand("-")
-                "Multiply (×)" -> g.setOperand("x")
-                "Divide (÷)" -> g.setOperand("/")
-            }
+            setOperand(userOperand, "firstTime")
 
             // Set the practice number
-            when (userNum) {
-                "Ones (1)" -> g.setPracticeNum(1)
-                "Twos (2)" -> g.setPracticeNum(2)
-                "Threes (3)" -> g.setPracticeNum(3)
-                "Fours (4)" -> g.setPracticeNum(4)
-                "Fives (5)" -> g.setPracticeNum(5)
-                "Sixes (6)" -> g.setPracticeNum(6)
-                "Sevens (7)" -> g.setPracticeNum(7)
-                "Eights (8)" -> g.setPracticeNum(8)
-                "Nines (9)" -> g.setPracticeNum(9)
-                "Tens (10)" -> g.setPracticeNum(10)
-                "Elevens (11)" -> g.setPracticeNum(11)
-                "Twelves (12)" -> g.setPracticeNum(12)
-            }
+            setPracticeNumber(userNum, "firstTime")
         }
 
         // Generate the problem
